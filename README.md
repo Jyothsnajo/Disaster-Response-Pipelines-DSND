@@ -1,88 +1,27 @@
-# Project Title
+# Disaster Response Pipelines
 
-One Paragraph of project description goes here
+## Project Description
+During disaster events, many disaster response organizations try to understand the messages sent by people and help accordingly. However, due to the extensiveness of these mesasges, it will be useful to have a technology that can classify these messages, so these organizations can help in a more efficient way. In this project, I focused on analyzing disaster data from Figure Eight and classify messages sent during disaster events usiung machine learning techniques. 
 
-## Getting Started
+I created ETL pipeline that loads and cleans datasets, and makes it ready for training a model. Later, the text data was trained and tested using machine learning - mutlioutput classifier. A web app was developed that displays model results as charts, and also allows users to classify disaster messages.
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+## Files
+Main files that are used in this project are
+* Messages and Categories CSV files (datasets)
+* process_data.py: This is ETL pipleine python script that cleans your datasets and loads them to a SQL database. Jupyter notebook file for this is ETL Pipeline Preparation.ipynb
+* train_classifier.py: This is machine learning pipeline python script that actually trains and tests your models ability to classify your text messages as accurately as possible. Jupyter notebook file for this is ML Pipeline Preparation.ipynb
+* Finally the files for webapp- run.py python script, which allows your model results to be displayed as visual summaries on a webapp, where users can even type their own disaster messages to classify them
 
-### Prerequisites
+## Instructions to run the files:
+1) Run the following commands in the project's root directory to set up your database and model.
 
-What things you need to install the software and how to install them
+  To run ETL pipeline that cleans data and stores in database python data/process_data.py data/disaster_messages.csv    data/disaster_categories.csv data/disaster_message_categories.db
+  To run ML pipeline that trains classifier and saves python models/train_classifier.py data/disaster_message_categories.db models/model.p
+2) Run the following command in the app's directory to run your web app. python run.py
 
-```
-Give examples
-```
+3) Go to http://0.0.0.0:3001/
 
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+## Results from webapp
+![Test Image 1](https://github.com/Jyothsnajo/Disaster-Response-Pipelines-DSND/blob/master/Images/MessageClassifier.PNG)
+![Test Image 2](https://github.com/Jyothsnajo/Disaster-Response-Pipelines-DSND/blob/master/Images/Charts.PNG)
 
