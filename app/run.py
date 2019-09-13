@@ -17,7 +17,12 @@ from sqlalchemy import create_engine
 app = Flask(__name__)
 
 class StartingVerbExtractor(BaseEstimator, TransformerMixin):
-
+    """
+    Starting Verb Extractor class
+    
+    This class extract the starting verb of a sentence,
+    creating a new feature for the ML classifier
+    """
     def starting_verb(self, text):
         sentence_list = nltk.sent_tokenize(text)
         for sentence in sentence_list:
@@ -35,9 +40,18 @@ class StartingVerbExtractor(BaseEstimator, TransformerMixin):
         return pd.DataFrame(X_tagged)
 
 def tokenize(text):
+    """
+    Tokenize function
+    
+    Arguments:
+        text -> list of text messages (english)
+    Output:
+        clean_tokens -> tokenized text, clean for ML modeling
+    """
+     # get tokens from text
     tokens = word_tokenize(text)
     lemmatizer = WordNetLemmatizer()
-
+    # clean tokens
     clean_tokens = []
     for tok in tokens:
         clean_tok = lemmatizer.lemmatize(tok).lower().strip()
